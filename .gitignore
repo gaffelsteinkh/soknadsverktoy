@@ -1,0 +1,31 @@
+# ---------------------------------------------------------------------
+#  Byggerester
+# ---------------------------------------------------------------------
+*.aux
+*.log
+*.out
+*.synctex.gz
+
+# ---------------------------------------------------------------------
+#  DINE DATA HOLDES UTENFOR GIT
+#
+#  Dette repoet er verktøyet. Alt om deg som person ligger i input/ og
+#  soknader/, og det skal ikke sjekkes inn her.
+#
+#  Hvorfor: git glemmer ikke. En fil du committer ligger i historikken
+#  for alltid, også etter at du sletter den. Gjør du repoet offentlig
+#  senere, følger CV-en, researchen din og alt annet med.
+#
+#  Vil du ha dine egne data versjonert, bruk et SEPARAT privat repo.
+#
+#  Skråstrek foran betyr at det bare gjelder rota, slik at de tomme
+#  startfilene i maler/nytt-oppsett/ fortsatt følger med.
+# ---------------------------------------------------------------------
+/input/
+/soknader/*
+!/soknader/.gitkeep
+/cv-generell.tex
+*.pdf
+
+# Gamle skriftfiler (erstattet av CVBody-*)
+fonts/SourceSans3-*.ttf

@@ -1,0 +1,170 @@
+% =====================================================================
+%  cvstil.sty — utseendet. Innhold ligger i innhold.tex, varianter i
+%  stillinger/. Denne fila trenger sjelden endringer.
+%  Kompiler med:  xelatex <fil>.tex  (eller ./bygg.sh)
+% =====================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cvstil}
+
+\RequirePackage[a4paper,top=16mm,bottom=16mm,left=18mm,right=18mm]{geometry}
+\RequirePackage{babel}
+\babelprovide[import,main]{norwegian}
+\RequirePackage{fontspec}
+\RequirePackage{xcolor}
+\RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage{tabularx}
+\RequirePackage{qrcode}
+\RequirePackage[hidelinks]{hyperref}
+\RequirePackage{needspace}
+
+% ---- Farger (samme familie som nettsiden) ---------------------------
+\definecolor{ink}{HTML}{22271F}
+\definecolor{ink2}{HTML}{4B4C3F}
+\definecolor{iron}{HTML}{A8492B}
+\definecolor{moss}{HTML}{4F6B47}
+\definecolor{line}{HTML}{C9C0A8}
+\definecolor{paper2}{HTML}{EFEBE0}
+
+% ---- Skrifter (ligger i fonts/) --------------------------------------
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{CVBody}[Path=fonts/, Extension=.ttf,
+  UprightFont=*-Regular, BoldFont=*-SemiBold]
+\newfontfamily\display{SpaceGrotesk}[Path=fonts/, Extension=.ttf,
+  UprightFont=*-Medium, BoldFont=*-Bold]
+\newfontfamily\mono{JetBrainsMono}[Path=fonts/, Extension=.ttf,
+  UprightFont=*-Regular, BoldFont=*-Medium, Scale=0.9]
+
+\color{ink}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagestyle{empty}
+\linespread{1.08}
+\frenchspacing
+\raggedright
+
+% ---- Brytere: settes i variantfila FØR \begin{document} --------------
+\newtoggle{uptime}      \toggletrue{uptime}   % personlig tagline-linje i toppen
+\newcommand{\Tagline}{}                       % settes i input/innhold.tex
+\newtoggle{qr}          \toggletrue{qr}       % QR-kode til nettsiden
+\newcommand{\soker}{}
+\newcommand{\Tilgjengelig}{}          % settes i innhold.tex
+\newcommand{\dokumenttype}{CV}                  % tekst over navnet (CV / Søknad)
+
+% ---- Loft mellom blokkene (justeres av \tettmodus) -------------------
+\newlength{\seksjonluft}      \setlength{\seksjonluft}{9pt}
+\newlength{\seksjonluftetter} \setlength{\seksjonluftetter}{5pt}
+\newlength{\oppforingluft}    \setlength{\oppforingluft}{4pt}
+\newlength{\kompluft}         \setlength{\kompluft}{3pt}
+\newlength{\prosjluft}        \setlength{\prosjluft}{5pt}
+
+% \tettmodus — kalles i variantfila FØR \begin{document} når ensides-CV-en
+% er noen linjer for lang. Klemmer lufta, ikke skriftstørrelsen.
+\newcommand{\tettmodus}{%
+  \setlength{\seksjonluft}{6pt}%
+  \setlength{\seksjonluftetter}{3pt}%
+  \setlength{\oppforingluft}{2.5pt}%
+  \setlength{\kompluft}{2pt}%
+  \setlength{\prosjluft}{3pt}%
+  \linespread{1.02}%
+  \geometry{top=14mm,bottom=12mm}}
+
+% ---- Topp ------------------------------------------------------------
+\newcommand{\cvtopp}[4]{% navn, epost, telefon, sted
+  \begin{minipage}[t]{0.80\textwidth}
+    {\mono\small\color{iron}\dokumenttype\,—\,\the\year}\\[3pt]
+    {\display\bfseries\fontsize{26}{28}\selectfont #1}\\[4pt]
+    \iftoggle{uptime}{\ifdefempty{\Tagline}{\vspace{3pt}}{{\mono\small\color{ink2}\Tagline}\\[5pt]}}{\vspace{3pt}}
+    {\small #2 \quad\textcolor{line}{|}\quad #3 \quad\textcolor{line}{|}\quad #4}
+  \end{minipage}%
+  \hfill
+  \iftoggle{qr}{%
+  \begin{minipage}[t]{0.17\textwidth}\raggedleft
+    \vspace{2pt}\qrcode[height=18mm]{\NettCV}\\[1pt]
+    {\mono\fontsize{6}{7}\selectfont\color{ink2}nett-CV}
+  \end{minipage}}{}%
+  \par\vspace{6pt}
+  {\color{iron}\rule{\textwidth}{1.2pt}}\par\vspace{8pt}
+}
+
+% ---- Seksjonsoverskrift ---------------------------------------------
+\newcommand{\seksjon}[1]{%
+  \par\needspace{4\baselineskip}\vspace{\seksjonluft}%
+  {\display\bfseries\large\color{ink}#1}\par\vspace{1pt}%
+  {\color{line}\rule{\textwidth}{0.5pt}}\par\vspace{\seksjonluftetter}%
+}
+
+% ---- Profil og søker-linje ------------------------------------------
+\newcommand{\profiltekst}[1]{{#1}\par}
+\newcommand{\sokerlinje}{%
+  \ifdefempty{\soker}{}{%
+    \par\vspace{5pt}{\mono\small\color{iron}Søker:}~\textbf{\soker}%
+    \ifdefempty{\Tilgjengelig}{}{%
+      \quad\textcolor{line}{|}\quad{\mono\small\color{iron}Tilgjengelig:}~\textbf{\Tilgjengelig}}%
+    \par}}
+
+% ---- Erfaring / utdanning -------------------------------------------
+%  \oppforing{år}{tittel}{sted/rolle}{beskrivelse}
+\newlength{\datobredde}\setlength{\datobredde}{22mm}
+\newcommand{\oppforing}[4]{%
+  \par\needspace{3\baselineskip}%
+  \noindent\makebox[\datobredde][l]{\mono\small\color{ink2}#1}%
+  \parbox[t]{\dimexpr\textwidth-\datobredde\relax}{%
+    \textbf{#2}\ifstrempty{#3}{}{\ {\color{ink2}— #3}}\par
+    \ifstrempty{#4}{}{{\small #4\par}}}%
+  \par\vspace{\oppforingluft}%
+}
+% Kort linje for mindre relevante ting (sparer plass)
+\newcommand{\kortlinje}[2]{%
+  \par\noindent\makebox[\datobredde][l]{\mono\small\color{ink2}#1}%
+  \parbox[t]{\dimexpr\textwidth-\datobredde\relax}{\small #2\par}\par\vspace{\oppforingluft}%
+}
+
+% ---- Kompetanse -----------------------------------------------------
+\newcommand{\kompetanse}[2]{%
+  \par\noindent\makebox[38mm][l]{\small\bfseries #1}%
+  \parbox[t]{\dimexpr\textwidth-38mm\relax}{\small #2\par}\par\vspace{\kompluft}%
+}
+\newcommand{\sep}{\,\textcolor{line}{·}\, }
+
+% ---- Prosjekt -------------------------------------------------------
+\newcommand{\prosjekt}[2]{%
+  \par\needspace{2\baselineskip}%
+  \textbf{#1}\par
+  {\small #2}\par\vspace{\prosjluft}%
+}
+
+% ---- Liten tre-kolonne-bunn ----------------------------------------
+\newcommand{\bunn}[3]{%
+  \par\vspace{2pt}\noindent
+  \begin{minipage}[t]{0.27\textwidth}{\small\bfseries Språk}\par\vspace{1pt}{\small #1\par}\end{minipage}\hfill
+  \begin{minipage}[t]{0.30\textwidth}{\small\bfseries Sertifikater og førerkort}\par\vspace{1pt}{\small #2\par}\end{minipage}\hfill
+  \begin{minipage}[t]{0.37\textwidth}{\small\bfseries Faglige interesser}\par\vspace{1pt}{\small #3\par}\end{minipage}\par
+}
+
+% Kompakt variant for ensides-CV: to linjer, egen tynn strek, ingen
+% seksjonsoverskrift — "Annet" som overskrift sier ingenting uansett.
+\newcommand{\bunnkort}[2]{%
+  \par\vspace{\seksjonluft}%
+  {\color{line}\rule{\textwidth}{0.5pt}}\par\vspace{4pt}%
+  \noindent\makebox[26mm][l]{\small\bfseries Språk}{\small #1}\par\vspace{1.5pt}%
+  \noindent\makebox[26mm][l]{\small\bfseries Sertifikater}{\small #2}\par}
+
+% =====================================================================
+%  SØKNADSBREV — samme topp (med QR) som CV-en, så de hører sammen.
+% =====================================================================
+\newcommand{\mottaker}[1]{%  adresseblokk, linjer skilles med \\
+  \begin{minipage}[t]{0.6\textwidth}\small #1\end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.35\textwidth}\raggedleft\small\Poststed, \today\end{minipage}\par
+  \vspace{10mm}}
+\newcommand{\emne}[1]{%
+  {\display\bfseries\large #1}\par\vspace{1pt}%
+  {\color{line}\rule{\textwidth}{0.5pt}}\par\vspace{8pt}}
+\newenvironment{brevtekst}{%
+  \setlength{\parskip}{7pt}\linespread{1.15}\selectfont}{\par}
+\newcommand{\signatur}[1]{%
+  \par\vspace{8pt}Mvh\par\vspace{12mm}%
+  {\display\bfseries #1}\par
+  {\small\color{ink2}\Telefon\quad\textcolor{line}{|}\quad\Epost}\par
+  \vspace{6pt}{\mono\small\color{iron}Vedlegg:}~{\small CV}\par}

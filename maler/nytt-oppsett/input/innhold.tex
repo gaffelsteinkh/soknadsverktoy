@@ -1,0 +1,98 @@
+% =====================================================================
+%  innhold.tex — ALLE FAKTA OM DEG, skrevet én gang.
+%
+%  Variantfilene i soknader/<firma>/ velger hvilke blokker som brukes,
+%  i hvilken rekkefølge, og kan overstyre en blokk med \renewcommand.
+%
+%  REGEL: fakta endres BARE her. Spissing skjer i variantfilene.
+%  Da kan ingen søknad inneholde noe du ikke faktisk har gjort.
+%
+%  Blokknavnene under (\ErfEn, \UtdTo, \ProsjEn …) er slotter som malen
+%  i maler/soknad/cv.tex refererer til. Du kan gi dem navn som beskriver
+%  innholdet i stedet (\ErfLagerarbeid, \UtdFagskole) — da må du bytte
+%  navnene i malen også.
+% =====================================================================
+
+\newcommand{\Navn}{<Fullt navn>}
+\newcommand{\NavnKort}{<Slik du signerer>}
+\newcommand{\Epost}{<e-post>}
+\newcommand{\Telefon}{<+47 ...>}
+\newcommand{\Sted}{<Sted, fylke>}
+\newcommand{\Poststed}{<Poststed>}                  % brukes i datolinja i brev
+\newcommand{\NettCV}{<https://...>}                 % QR-koden peker hit
+\renewcommand{\Tilgjengelig}{}                      % f.eks. «Kan begynne umiddelbart»
+\renewcommand{\Tagline}{}                           % valgfri linje under navnet
+
+% ---------------------------------------------------------------------
+%  PROFIL
+% ---------------------------------------------------------------------
+\newcommand{\Profil}{%
+  <Fem til sju linjer om hvem du er. Skriv det én gang, godt. Variantene
+  skriver ofte sin egen, men denne er utgangspunktet.>}
+
+\newcommand{\ProfilKort}{%
+  <Samme innhold på fire linjer. Brukes på ensides-CV.>}
+
+% ---------------------------------------------------------------------
+%  KOMPETANSE — én kommando per gruppe. \sep skiller stikkordene.
+% ---------------------------------------------------------------------
+\newcommand{\KompEn}{\kompetanse{<Gruppenavn>}{%
+  <Stikkord>\sep <Stikkord>\sep <Stikkord>}}
+\newcommand{\KompTo}{\kompetanse{<Gruppenavn>}{%
+  <Stikkord>\sep <Stikkord>\sep <Stikkord>}}
+\newcommand{\KompTre}{\kompetanse{<Gruppenavn>}{%
+  <Stikkord>\sep <Stikkord>\sep <Stikkord>}}
+\newcommand{\KompFire}{\kompetanse{<Gruppenavn>}{%
+  <Stikkord>\sep <Stikkord>\sep <Stikkord>}}
+
+% ---------------------------------------------------------------------
+%  ERFARING  —  \oppforing{år}{sted}{rolle}{beskrivelse}
+%  Skriv resultater, ikke arbeidsoppgaver. Tall der du har dem.
+% ---------------------------------------------------------------------
+\newcommand{\ErfEn}{\oppforing{<år–år>}{<Arbeidsgiver>}{<rolle>}{%
+  <Hva du gjorde, og hva som ble resultatet.>}}
+\newcommand{\ErfTo}{\oppforing{<år–år>}{<Arbeidsgiver>}{<rolle>}{%
+  <...>}}
+\newcommand{\ErfTre}{\oppforing{<år–år>}{<Arbeidsgiver>}{<rolle>}{%
+  <...>}}
+\newcommand{\ErfFire}{\oppforing{<år–år>}{<Arbeidsgiver>}{<rolle>}{%
+  <...>}}
+
+% Eldre eller mindre relevante jobber, komprimert til én linje.
+\newcommand{\EldreKort}{%
+  \kortlinje{<år–år>}{\textbf{Annen erfaring:} <jobb> (<år>)\sep <jobb> (<år>)}}
+
+% ---------------------------------------------------------------------
+%  UTDANNING OG VERV
+% ---------------------------------------------------------------------
+\newcommand{\UtdEn}{\oppforing{<år–år>}{<Skole>}{<linje/grad>}{%
+  <Fag og innhold som er relevant.>}}
+\newcommand{\UtdTo}{\oppforing{<år–år>}{<Skole>}{<linje/grad>}{%
+  <...>}}
+\newcommand{\VervEn}{\oppforing{<år–år>}{<Verv>}{}{%
+  <Hva vervet innebar.>}}
+
+\newcommand{\UtdEldreKort}{%
+  \kortlinje{<år–år>}{\textbf{Tidligere utdanning:} <skole og linje> (<år>)}}
+
+% ---------------------------------------------------------------------
+%  PROSJEKTER  —  \prosjekt{tittel}{beskrivelse}
+%  Beskriv HVORFOR prosjektet finnes før HVA det er laget i.
+% ---------------------------------------------------------------------
+\newcommand{\ProsjEn}{\prosjekt{<Tittel>}{%
+  <Hvilket problem løser det, og hva består det av.>}}
+\newcommand{\ProsjTo}{\prosjekt{<Tittel>}{%
+  <...>}}
+
+% ---------------------------------------------------------------------
+%  SPRÅK, SERTIFIKATER, INTERESSER
+% ---------------------------------------------------------------------
+\newcommand{\Bunn}{\bunn
+  {<Språk>\\ <Språk>}
+  {<Sertifikat>\\ <Førerkort>}
+  {<Interesse>\sep <Interesse>}}
+
+% Kompakt variant for ensides-CV: to linjer i stedet for tre kolonner.
+\newcommand{\BunnKort}{\bunnkort
+  {<Språk>\sep <Språk>}
+  {<Sertifikat>\sep <Førerkort>\sep Referanser oppgis etter forespørsel}}
