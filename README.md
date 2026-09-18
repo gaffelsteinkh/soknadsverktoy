@@ -137,10 +137,36 @@ Bruk derfor to repoer:
 Slik lager du det offentlige:
 
 ```bash
-./nytt-oppsett.sh ~/jobbsoknad-verktoy-public
-cd ~/jobbsoknad-verktoy-public
-git init && git add -A && git commit -m "Verktøy for spissede CV-er og søknader"
-gh repo create jobbsoknad-verktoy --public --source=. --push
+./nytt-oppsett.sh ~/mitt-verktoy
+cd ~/mitt-verktoy
+git init -b main && git add -A
+```
+
+**Se over hva som faktisk blir med, før du publiserer:**
+
+```bash
+git diff --cached --name-only        # dette blir offentlig
+git status --porcelain --ignored     # linjer med !! holdes utenfor
+```
+
+Første liste skal bare inneholde verktøyfiler. Dukker `input/`, `soknader/` eller din egen
+`cv-generell.tex` opp der, stopp og se på `.gitignore` før du går videre.
+
+```bash
+git commit -m "Verktøy for spissede CV-er og søknader"
+gh repo create <navn> --public --source=. --push
+```
+
+Velg et `<navn>` du ikke allerede bruker. Ligger arbeidsrepoet ditt på GitHub under navnet
+du hadde tenkt å bruke, må det offentlige hete noe annet.
+
+**Feiler pushen med «Could not read from remote repository»:** `gh` setter remoten til SSH
+hvis kontoen din er satt opp for det, og da stopper det om du ikke har SSH-nøkkel. Repoet er
+allerede opprettet på det tidspunktet, så du trenger bare bytte til HTTPS og pushe igjen:
+
+```bash
+git remote set-url origin https://github.com/<bruker>/<navn>.git
+git push -u origin main
 ```
 
 Kopien har en streng `.gitignore` som holder `input/`, `soknader/` og `cv-generell.tex` utenfor git.
