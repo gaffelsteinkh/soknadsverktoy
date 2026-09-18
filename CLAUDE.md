@@ -44,8 +44,10 @@ oppdater `SKRIVESTIL.md` med det du lærte. Rettelsene er det beste grunnlaget s
 ## Oppgaver
 - **Stillingsannonse → research + spisset CV + søknad:** følg del A i `ARBEIDSFLYT.md`.
 - **Bedrift/nettside → research + åpen søknad:** følg del B i `ARBEIDSFLYT.md`.
+- **Næringsområde eller kommune → kartlegging + kandidatliste:** følg del C. Bruk Enhetsregisterets
+  åpne API først, ikke katalogsøk. Katalogene finner en brøkdel.
 
-Begge ender i samme sted: én mappe `soknader/<firma>/`.
+De to første ender i samme sted: én mappe `soknader/<firma>/`. Del C ender i et kartleggingsnotat.
 
 ## Tekniske regler
 - **Fakta endres bare i `input/innhold.tex`.** Spissing gjøres i variantfilene med `\renewcommand`,
