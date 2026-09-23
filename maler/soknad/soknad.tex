@@ -1,0 +1,46 @@
+% =====================================================================
+%  MAL: SØKNADSBREV — kopier til soknader/<firma>/<firma>-soknad.tex
+%  Brukes både til åpen søknad OG til svar på utlyst stilling.
+%  Bygg fra rotmappa:  ./bygg.sh soknader/<firma>/<firma>-soknad.tex
+%
+%  MÅL: nøyaktig én side, 250–380 ord. Research ligger i research.md.
+% =====================================================================
+\documentclass[10.5pt]{article}
+\usepackage{cvstil}
+\input{input/innhold}
+\renewcommand{\dokumenttype}{Søknad}
+%\togglefalse{tagline}
+\geometry{top=16mm,bottom=18mm}
+
+\begin{document}
+\cvtopp{\Navn}{\Epost}{\Telefon}{\Sted}
+
+\mottaker{<Navn på mottaker>\\ <Rolle>\\ <Firma>\\ <Adresse>}
+
+% Utlyst stilling:  \emne{Søknad — <stillingstittel>, ref. <nr>}
+% Åpen søknad:      \emne{Åpen søknad — <rolle/område>}
+\emne{Åpen søknad — <rolle/område>}
+
+\begin{brevtekst}
+Hei <Fornavn>,
+
+% 1. HVORFOR DERE: noe konkret fra researchen som viser at du har satt
+%    deg inn i firmaet. Dette avsnittet handler om dem, ikke om deg.
+<...>
+
+% 2. RØD TRÅD 1 koblet til et behov de har — med ett konkret bevis.
+<...>
+
+% 3. RØD TRÅD 2 (evt. 3) — kort, konkret.
+<...>
+
+% 4. HVA DU BER OM: en konkret rolle der bakgrunnen din løser noe for DEM.
+%    Se posisjoneringen i input/om-meg.md.
+<...>
+
+% 5. AVSLUTNING: du tar kontakt / ønsker en prat.
+<...>
+\end{brevtekst}
+
+\signatur{\NavnKort}
+\end{document}

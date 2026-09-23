@@ -1,0 +1,42 @@
+% =====================================================================
+%  cv-generell.tex — grunnversjonen med hele bredden.
+%  Dette er utgangspunktet, ikke noe du sender. Spissede versjoner
+%  lages per bedrift fra maler/soknad/cv.tex.
+% =====================================================================
+\documentclass[10.5pt]{article}
+\usepackage{cvstil}
+\input{input/innhold}
+
+\renewcommand{\soker}{<Hva du ser etter>}
+
+\begin{document}
+\cvtopp{\Navn}{\Epost}{\Telefon}{\Sted}
+
+\seksjon{Profil}
+\profiltekst{\Profil}
+\sokerlinje
+
+\seksjon{Kompetanse}
+\KompEn
+\KompTo
+\KompTre
+\KompFire
+
+\seksjon{Erfaring}
+\ErfEn
+\ErfTo
+\ErfTre
+\ErfFire
+
+\seksjon{Utdanning og verv}
+\UtdEn
+\VervEn
+\UtdTo
+
+\seksjon{Prosjekter}
+\ProsjEn
+\ProsjTo
+
+\seksjon{Annet}
+\Bunn
+\end{document}

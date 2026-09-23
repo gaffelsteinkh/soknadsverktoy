@@ -1,0 +1,3 @@
+Én mappe per bedrift havner her. Start fra maler/soknad/.
+_status.md er statusbordet, og Claude leser det først i hver økt.
+Innholdet holdes utenfor git som standard - se .gitignore.

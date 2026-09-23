@@ -1,0 +1,83 @@
+% =====================================================================
+%  MAL: SPISSET CV — kopier til soknader/<firma>/<firma>-cv.tex
+%  Bygg fra rotmappa:  ./bygg.sh soknader/<firma>/<firma>-cv.tex
+%
+%  BLOKKNAVN: \ErfEn, \UtdTo, \ProsjEn og de andre er SLOTTER. De faktiske
+%  navnene står i input/innhold.tex. Bytt dem ut med dine egne når du
+%  kopierer denne fila, og velg blokkene som treffer annonsen.
+%
+%  MÅL: NØYAKTIG ÉN SIDE. Bredden lever videre på nett-CV-en, som
+%  QR-koden peker til. Blokknavnene under hentes fra input/innhold.tex.
+%  Med standardoppsettet er dette målt til én side med ca. 2 linjer
+%  luft igjen — det er rommet du har til en lengre, spisset profiltekst.
+%
+%  Trenger du MER plass, i denne rekkefølgen:
+%    1. ta bort én kompetansegruppe
+%    2. ta bort \UtdEldreKort (eldre utdanning)
+%    3. kutt et prosjekt
+%    4. ta bort en jobb som ikke treffer annonsen, behold den som gjør det
+%  Har du LEDIG plass: sett inn \EldreKort, et prosjekt til, \KompFire,
+%  eller bytt Kort-variantene mot de fulle.
+%
+%  Stilling / bedrift: <...>
+%  Annonse: <lenke>      Frist: <dato>      Kontakt: <navn>
+%  Nøkkelord fra annonsen: <...>
+% =====================================================================
+\documentclass[10.5pt]{article}
+\usepackage{cvstil}
+\input{input/innhold}
+
+% ---- Brytere --------------------------------------------------------
+\tettmodus              % nødvendig for å få plass på én side — la den stå
+%\togglefalse{tagline}  % skru av tagline-linja der den ikke passer
+%\togglefalse{qr}       % skru av QR-koden
+
+\renewcommand{\soker}{<Stillingstittel> hos <Firma>}
+
+% ---- Overstyringer (spiss teksten her, ikke i innhold.tex) ----------
+% Profilen er det viktigste spisse-verktøyet: 4–6 linjer, skrevet mot
+% akkurat denne stillingen. Start med det DE trenger, ikke med deg selv.
+% \ProfilKort er utgangspunktet — skriv om, ikke bare kopier.
+\renewcommand{\Profil}{%
+  \ProfilKort}
+
+% Samme fakta, annen vinkling — bruk ved behov. Blokknavnene står i input/innhold.tex:
+%\renewcommand{\ErfXxx}{\oppforing{<år>}{<sted>}{<rolle>}{%
+%  <Samme fakta, vinklet mot annonsen.>}}
+
+\begin{document}
+\cvtopp{\Navn}{\Epost}{\Telefon}{\Sted}
+
+\seksjon{Profil}
+\profiltekst{\Profil}
+\sokerlinje
+
+% Rekkefølge og UTVALG er spissingen. Det viktigste for annonsen først.
+% Maks 3 kompetansegrupper på én side.
+\seksjon{Kompetanse}
+\KompEn
+\KompTo
+\KompTre
+%\KompFire
+
+\seksjon{Erfaring}
+\ErfEn
+\ErfTo
+\ErfTre
+\ErfFire
+%\EldreKort   % komprimerte eldre jobber. Det første som ryker på en ensider,
+              % og det første du setter inn igjen hvis du har plass.
+
+\seksjon{Utdanning og verv}
+\UtdEn
+\VervEn
+\UtdTo
+\UtdEldreKort
+
+\seksjon{Prosjekter}
+\ProsjEn
+\ProsjTo
+
+% \BunnKort lager sin egen strek — den skal IKKE ha \seksjon foran seg.
+\BunnKort
+\end{document}
