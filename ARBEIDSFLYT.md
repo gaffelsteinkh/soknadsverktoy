@@ -155,6 +155,18 @@ noe annet enn et med underskudd og null egenkapital. Det første tar ut utbytte,
 
 ---
 
+## D) Innkalt til intervju
+
+1. Les annonsen og `research.md` på nytt. Hva er de mest opptatt av?
+2. Finn historiene i `input/intervju.md` som svarer på det. Mangler en, skriv den fra
+   `historier.md` i brukerens stemme: ett til to minutter, poenget til slutt.
+3. Forbered svaret på spørsmålet brukeren helst vil slippe. Ærlig, kort, og det skal ende med
+   hva brukeren gjør nå.
+4. Skriv om siste setning i «Deg selv, på ett minutt»: hvorfor akkurat dem.
+5. Si til brukeren hvilke historier som passer, og be dem øve høyt.
+
+---
+
 ## Sluttrapport til brukeren (begge veier)
 
 Kort, ærlig, og alltid med disse fem punktene:

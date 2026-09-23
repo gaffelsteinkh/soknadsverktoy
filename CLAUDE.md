@@ -10,11 +10,12 @@ Les alt i `input/` før du skriver noe:
 
 | Fil | Hva den gir deg |
 |---|---|
-| `input/om-meg.md` | Hvem brukeren er: posisjonering, røde tråder, svakheter, geografi, tilgjengelighet, logg |
+| `input/om-meg.md` | Hvem brukeren er: posisjonering, røde tråder, svakheter, grenser, geografi, tilgjengelighet |
 | `input/innhold.tex` | Alle fakta som havner på CV-en, som LaTeX-blokker |
 | `input/historier.md` | Konkrete episoder med detaljer. **Råmaterialet til søknadsbrev.** |
 | `input/skrivestil/SKRIVESTIL.md` | Hvordan brukeren formulerer seg. Bindende. |
 | `input/skrivestil/tekster/` | Tekst brukeren har skrevet selv. Les det som ligger der. |
+| `input/intervju.md` | Historiene slik brukeren forteller dem høyt i et intervju, hvis fila finnes. |
 
 Les også **`soknader/_status.md`** — det operative statusbordet: hvor hver sak står, hvilke
 telefoner som er flaskehalsen, hva som er screenet og frarådet, og hvilke større grep som venter.
@@ -29,7 +30,11 @@ fire lag er verre enn ingen notat, for leseren vet ikke hvilket lag som gjelder.
 Svar på det språket `input/om-meg.md` er skrevet på.
 
 **Finn aldri på** erfaring, sertifikater, tall eller kontaktpersoner. Mangler noe: spør, og legg svaret
-inn i `input/om-meg.md` eller `input/historier.md`.
+inn i `input/om-meg.md` eller `input/historier.md`. Og slå aldri sammen to ting brukeren har sagt til
+én ny påstand. To sanne setninger kan bli én usann.
+
+**Grensene i `input/om-meg.md` er absolutte.** Det brukeren har sagt aldri skal stå skriftlig, eller
+ikke på nett, skal ikke stå der, uansett hvor godt det ville passet.
 
 **Posisjoneringen og geografien** står i `input/om-meg.md` og styrer alt. Ligger et firma utenfor
 brukerens oppgitte radius, si ifra med én gang i stedet for å bruke tid på research.
@@ -51,6 +56,13 @@ oppdater `SKRIVESTIL.md` med det du lærte. Rettelsene er det beste grunnlaget s
 en lenke peker til. Er deler av et prosjekt laget av andre eller med KI, nevn bare det brukeren selv
 kan stå for.
 
+**Ikke stable innrømmelser.** Én ærlig svakhet på papiret er styrke. Flere på samme side blir et
+mønster, og leseren begynner å lete etter flere. Resten tas muntlig, hvis noen spør.
+
+**Fagord og frekvensord må stemme nøyaktig.** «Daglig» og «ukentlig» påstår en rutine brukeren kanskje
+ikke har. Et fagord som er litt feil, er verre enn et vanlig ord, for en fagperson ser det med én gang.
+Er du usikker, bruk brukerens eget ord.
+
 ## Oppgaver
 - **Stillingsannonse → research + spisset CV + søknad:** følg del A i `ARBEIDSFLYT.md`.
 - **Bedrift/nettside → research + åpen søknad:** følg del B i `ARBEIDSFLYT.md`.
@@ -62,20 +74,23 @@ De to første ender i samme sted: én mappe `soknader/<firma>/`. Del C ender i e
 ## Tekniske regler
 - **Fakta endres bare i `input/innhold.tex`.** Spissing gjøres i variantfilene med `\renewcommand`,
   utvalg og rekkefølge. Variantfilene henter fakta med `\input{input/innhold}`.
-- **⚑ Nett-CV-en og `input/` er totalen. Den spissede CV-en er et utvalg.**
-  Alt som finnes om brukeren ligger på nett-CV-en og i `input/`. En spisset CV skal **ikke**
-  gjenta totalen i kortform. Den skal plukke de bitene som betyr noe for akkurat denne
-  mottakeren, og la resten bli liggende der den hører hjemme. Ser CV-en ut som en forkortet
-  nett-CV, er den ikke spisset.
+- **⚑ `input/` er totalen, sammen med nett-CV-en hvis brukeren har en. Den spissede CV-en er et utvalg.**
+  En spisset CV skal **ikke** gjenta totalen i kortform. Den skal plukke de bitene som betyr noe
+  for akkurat denne mottakeren, og la resten bli liggende der den hører hjemme. Ser CV-en ut som
+  en forkortet versjon av alt, er den ikke spisset.
 - **⚑ Seksjonene er `Erfaring`, `Utdanning` og `Verv`, hver for seg.**
   De skal ikke slås sammen, og **rekkefølgen er et valg per mottaker**: den seksjonen som betyr
   mest for dem står først. Et verksted leser Erfaring først, en bedrift med formelle krav leser
   Utdanning først. En seksjon som ikke har noe å si til denne mottakeren, tas helt ut.
+  Standardrekkefølgen, og når den bør brytes, står øverst i `maler/soknad/cv.tex`.
 - **⚑ Ett prosjekt på en spisset CV, ikke en liste.** Velg det ene som tilfører noe mottakeren
   ikke allerede får vite fra Erfaring. To prosjekter som beviser det samme er ett for mange,
   og en oppramsing beviser ingenting.
 - **⚑ Vekten i ferdighetslista skal stemme med posisjoneringen.** Leseren tar gruppen med flest
   tagger som hvem personen er. Selger brukeren seg som praktiker, skal ikke data-gruppen være størst.
+- **⚑ Ferdigheter er det brukeren kan. Papirene står for seg.** Utdanning, sertifikater og førerkort
+  har egne seksjoner. Står noe under Ferdigheter som en leser tar for et papir brukeren ikke har,
+  tas det ut. Les hver tagg slik en fremmed gjør: betyr den noe annet i en annen bransje, er den feil.
 - **⚑ Skjult tekst følger de samme reglene.** På en nett-CV leses også teksten som vises når lenka
   deles (metabeskrivelser), linjer i JavaScript, alt-tekster og kommentarer i kildekoden. Når en regel
   om innholdet endres, søk gjennom alt, ikke bare den synlige teksten.
@@ -83,9 +98,10 @@ De to første ender i samme sted: én mappe `soknader/<firma>/`. Del C ender i e
   hjemme i det private repoet når grunnen er personlig.
 - **Mappe per bedrift:** `soknader/<firma>/` med `annonse.md` (hvis utlyst stilling), `research.md`,
   `<firma>-cv.tex` og `<firma>-soknad.tex`. Start fra `maler/soknad/`. PDF-ene bygges i samme mappe.
-- **Lengde: CV nøyaktig 1 side. Brev nøyaktig 1 side.** Bredden lever videre på nett-CV-en, som QR-koden
-  peker til. CV-malen har `\tettmodus` på og er målt til én side med ca. 2 linjer luft. Det rommet er til
-  den spissede profilteksten. Trenger du mer plass, står kuttrekkefølgen øverst i malen.
+- **Lengde: CV nøyaktig 1 side. Brev nøyaktig 1 side.** Resten av bredden hører hjemme i intervjuet, og
+  på nett-CV-en hvis brukeren har en. QR-koden vises bare når `\NettCV` er fylt ut. CV-malen har
+  `\tettmodus` på og er målt til én side med ca. 2 linjer luft. Det rommet er til den spissede
+  profilteksten. Trenger du mer plass, står kuttrekkefølgen øverst i malen.
 - **Brevet:** 250–380 ord får plass med god margin (380 ord = ca. 9 linjer til overs). Over ~440 ord sprekker siden.
 - Bygg fra rotmappa: `./bygg.sh soknader/<firma>/<fil>.tex`. Skriptet melder fra om sidetallet er feil.
   **Se på PDF-en før du rapporterer.** Bygger den ikke, si det. Ikke påstå at noe er verifisert.

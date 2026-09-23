@@ -6,18 +6,29 @@
 %  navnene står i input/innhold.tex. Bytt dem ut med dine egne når du
 %  kopierer denne fila, og velg blokkene som treffer annonsen.
 %
-%  MÅL: NØYAKTIG ÉN SIDE. Bredden lever videre på nett-CV-en, som
-%  QR-koden peker til. Blokknavnene under hentes fra input/innhold.tex.
-%  Med standardoppsettet er dette målt til én side med ca. 2 linjer
-%  luft igjen — det er rommet du har til en lengre, spisset profiltekst.
+%  MÅL: NØYAKTIG ÉN SIDE. Resten av bredden hører hjemme i intervjuet, og
+%  på nett-CV-en hvis du har en (QR-koden peker dit). Med standardoppsettet
+%  er malen målt til én side med ca. 2 linjer luft igjen. Det er rommet du
+%  har til en lengre, spisset profiltekst.
+%
+%  REKKEFØLGEN er et valg per mottaker. Standarden under er den vanlige
+%  norske: Profil, Erfaring, Utdanning, Ferdigheter, Prosjekt og Verv, med
+%  språk og sertifikater nederst. Bryt den når en annen seksjon betyr mer
+%  for akkurat denne mottakeren:
+%    Lang erfaring i samme fag           Erfaring først (standarden)
+%    Nyutdannet, eller formelle krav     Utdanning først
+%    Bytter bransje                      Ferdigheter før Erfaring
+%    Lite fast arbeid, men sterke
+%    egne prosjekter                     Prosjekt før Erfaring
+%  En seksjon som ikke har noe å si til denne mottakeren, tas helt ut.
 %
 %  Trenger du MER plass, i denne rekkefølgen:
-%    1. ta bort én kompetansegruppe
+%    1. ta bort én ferdighetsgruppe
 %    2. ta bort \UtdEldreKort (eldre utdanning)
-%    3. kutt et prosjekt
+%    3. ta bort prosjektet, hvis Erfaring allerede viser det samme
 %    4. ta bort en jobb som ikke treffer annonsen, behold den som gjør det
-%  Har du LEDIG plass: sett inn \EldreKort, et prosjekt til, \KompFire,
-%  eller bytt Kort-variantene mot de fulle.
+%  Har du LEDIG plass: sett inn \EldreKort eller \FerdFire, eller bytt
+%  Kort-variantene mot de fulle.
 %
 %  Stilling / bedrift: <...>
 %  Annonse: <lenke>      Frist: <dato>      Kontakt: <navn>
@@ -30,7 +41,7 @@
 % ---- Brytere --------------------------------------------------------
 \tettmodus              % nødvendig for å få plass på én side — la den stå
 %\togglefalse{tagline}  % skru av tagline-linja der den ikke passer
-%\togglefalse{qr}       % skru av QR-koden
+%\togglefalse{qr}       % skru av QR-koden (den vises bare når \NettCV er fylt ut)
 
 \renewcommand{\soker}{<Stillingstittel> hos <Firma>}
 
@@ -52,14 +63,6 @@
 \profiltekst{\Profil}
 \sokerlinje
 
-% Rekkefølge og UTVALG er spissingen. Det viktigste for annonsen først.
-% Maks 3 kompetansegrupper på én side.
-\seksjon{Kompetanse}
-\KompEn
-\KompTo
-\KompTre
-%\KompFire
-
 \seksjon{Erfaring}
 \ErfEn
 \ErfTo
@@ -68,15 +71,26 @@
 %\EldreKort   % komprimerte eldre jobber. Det første som ryker på en ensider,
               % og det første du setter inn igjen hvis du har plass.
 
-\seksjon{Utdanning og verv}
+\seksjon{Utdanning}
 \UtdEn
-\VervEn
 \UtdTo
 \UtdEldreKort
 
-\seksjon{Prosjekter}
+% Ferdigheter er det du kan. Det du har papir på, står under Utdanning
+% eller nederst under sertifikater. Maks 3 grupper på én side.
+\seksjon{Ferdigheter}
+\FerdEn
+\FerdTo
+\FerdTre
+%\FerdFire
+
+% Ett prosjekt, ikke en liste. Velg det som viser noe mottakeren ikke
+% allerede får vite fra Erfaring.
+\seksjon{Prosjekt}
 \ProsjEn
-\ProsjTo
+
+\seksjon{Verv}
+\VervEn
 
 % \BunnKort lager sin egen strek — den skal IKKE ha \seksjon foran seg.
 \BunnKort

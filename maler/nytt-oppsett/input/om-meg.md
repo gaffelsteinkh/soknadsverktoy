@@ -16,6 +16,15 @@ Oppdater den når nye fakta dukker opp.
   <Hvordan vil du selges inn? Som fagperson, som generalist, som den som løser X?
   Skriv det som du ville sagt det høyt.>
 
+## Grenser
+Ting som aldri skal stå noe sted, eller bare noen steder. Claude følger dette uten å spørre igjen.
+
+- **Aldri skriftlig:** <for eksempel helse, familie eller økonomi. Det du bare vil ta opp muntlig,
+  hvis du selv vil.>
+- **Ikke på nett:** <det som kan stå i en søknad til én bedrift, men ikke på en side hele verden kan
+  lese. For eksempel verdifullt utstyr du har hjemme, eller hvilken bedrift du egentlig drømmer om.>
+- **Ord du ikke vil ha om deg:** <for eksempel «daglig» og «ukentlig» hvis det ikke er en fast rutine.>
+
 ## De røde trådene (bruk dem mot annonser)
 Tre til sju ting som går igjen gjennom hele bakgrunnen din, hver med et konkret bevis.
 Ikke egenskaper («ansvarsbevisst»), men mønstre med dekning.

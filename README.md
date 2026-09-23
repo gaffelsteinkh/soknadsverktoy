@@ -3,7 +3,7 @@
 CV-er og søknader i LaTeX, spisset mot hver enkelt bedrift sammen med Claude.
 Ett sted for fakta, ett sted for utseende, én mappe per søknad.
 
-Utskriftsvennlig A4. **CV-en er én side**, med QR-kode til nett-CV-en der hele bredden ligger.
+Utskriftsvennlig A4. **CV-en er én side**, med QR-kode til nett-CV-en hvis du har en.
 Søknadsbrevet er også én side, med samme topp, så de hører synlig sammen.
 
 ---
@@ -43,6 +43,7 @@ Den nye brukeren fyller ut `input/`, og Claude blir kjent med dem i stedet.
 | `input/innhold.tex` | Alle fakta som havner på CV-en, som LaTeX-blokker med `Kort`-varianter for ensideren. |
 | `input/om-meg.md` | Posisjonering, røde tråder, svakheter, geografi, tilgjengelighet. Hvem du er, ikke hvor sakene står. |
 | `input/historier.md` | Konkrete episoder med detaljer. **Råmaterialet til søknadsbrev.** |
+| `input/intervju.md` | Historiene fortalt høyt, ett til to minutter hver, med spørsmålet de svarer på. Til intervjuet, ikke til papiret. |
 | `input/skrivestil/SKRIVESTIL.md` | Hvordan du skriver. Bindende for alt som skrives i ditt navn. |
 | `input/skrivestil/tekster/` | Dump-mappe: tekst du har skrevet selv, så Claude lærer stemmen din. |
 | `soknader/<firma>/` | **Én mappe per bedrift:** annonse, research, spisset CV, søknad og PDF-er. |

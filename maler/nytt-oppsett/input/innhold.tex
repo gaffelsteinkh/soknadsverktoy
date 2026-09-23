@@ -15,11 +15,12 @@
 
 \newcommand{\Navn}{<Fullt navn>}
 \newcommand{\NavnKort}{<Slik du signerer>}
+% \renewcommand{\Hilsen}{Mvh}                     % valgfri: avslutningen i brev. Standard: Med vennlig hilsen
 \newcommand{\Epost}{<e-post>}
 \newcommand{\Telefon}{<+47 ...>}
 \newcommand{\Sted}{<Sted, fylke>}
 \newcommand{\Poststed}{<Poststed>}                  % brukes i datolinja i brev
-\newcommand{\NettCV}{<https://...>}                 % QR-koden peker hit
+\newcommand{\NettCV}{}                              % valgfri: adressen til nett-CV-en. Tom = ingen QR-kode
 \renewcommand{\Tilgjengelig}{}                      % f.eks. «Kan begynne umiddelbart»
 \renewcommand{\Tagline}{}                           % valgfri linje under navnet
 
@@ -34,15 +35,17 @@
   <Samme innhold på fire linjer. Brukes på ensides-CV.>}
 
 % ---------------------------------------------------------------------
-%  KOMPETANSE — én kommando per gruppe. \sep skiller stikkordene.
+%  FERDIGHETER — én kommando per gruppe. \sep skiller stikkordene.
+%  Ferdigheter er det du kan. Det du har papir på (utdanning, sertifikater,
+%  førerkort), har egne blokker og står ikke her.
 % ---------------------------------------------------------------------
-\newcommand{\KompEn}{\kompetanse{<Gruppenavn>}{%
+\newcommand{\FerdEn}{\kompetanse{<Gruppenavn>}{%
   <Stikkord>\sep <Stikkord>\sep <Stikkord>}}
-\newcommand{\KompTo}{\kompetanse{<Gruppenavn>}{%
+\newcommand{\FerdTo}{\kompetanse{<Gruppenavn>}{%
   <Stikkord>\sep <Stikkord>\sep <Stikkord>}}
-\newcommand{\KompTre}{\kompetanse{<Gruppenavn>}{%
+\newcommand{\FerdTre}{\kompetanse{<Gruppenavn>}{%
   <Stikkord>\sep <Stikkord>\sep <Stikkord>}}
-\newcommand{\KompFire}{\kompetanse{<Gruppenavn>}{%
+\newcommand{\FerdFire}{\kompetanse{<Gruppenavn>}{%
   <Stikkord>\sep <Stikkord>\sep <Stikkord>}}
 
 % ---------------------------------------------------------------------
@@ -63,7 +66,8 @@
   \kortlinje{<år–år>}{\textbf{Annen erfaring:} <jobb> (<år>)\sep <jobb> (<år>)}}
 
 % ---------------------------------------------------------------------
-%  UTDANNING OG VERV
+%  UTDANNING OG VERV — to egne seksjoner på CV-en
+%  Ikke fullført? Skriv «påbegynt» etter linja, og la datoene si resten.
 % ---------------------------------------------------------------------
 \newcommand{\UtdEn}{\oppforing{<år–år>}{<Skole>}{<linje/grad>}{%
   <Fag og innhold som er relevant.>}}

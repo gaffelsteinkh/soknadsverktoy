@@ -46,10 +46,11 @@
 % ---- Brytere: settes i variantfila FØR \begin{document} --------------
 \newtoggle{tagline}     \toggletrue{tagline}  % personlig tagline-linje i toppen
 \newcommand{\Tagline}{}                       % settes i input/innhold.tex
-\newtoggle{qr}          \toggletrue{qr}       % QR-kode til nettsiden
+\newtoggle{qr}          \toggletrue{qr}       % QR-kode til nett-CV-en, bare når \NettCV er fylt ut
 \newcommand{\soker}{}
 \newcommand{\Tilgjengelig}{}          % settes i innhold.tex
 \newcommand{\dokumenttype}{CV}                  % tekst over navnet (CV / Søknad)
+\newcommand{\Hilsen}{Med vennlig hilsen}        % avslutningen i brev. Overstyr i innhold.tex
 
 % ---- Loft mellom blokkene (justeres av \tettmodus) -------------------
 \newlength{\seksjonluft}      \setlength{\seksjonluft}{9pt}
@@ -78,7 +79,7 @@
     {\small #2 \quad\textcolor{line}{|}\quad #3 \quad\textcolor{line}{|}\quad #4}
   \end{minipage}%
   \hfill
-  \iftoggle{qr}{%
+  \ifboolexpr{togl{qr} and not test{\ifundef{\NettCV}} and not test{\ifdefempty{\NettCV}}}{%
   \begin{minipage}[t]{0.17\textwidth}\raggedleft
     \vspace{2pt}\qrcode[height=18mm]{\NettCV}\\[1pt]
     {\mono\fontsize{6}{7}\selectfont\color{ink2}nett-CV}
@@ -120,7 +121,7 @@
   \parbox[t]{\dimexpr\textwidth-\datobredde\relax}{\small #2\par}\par\vspace{\oppforingluft}%
 }
 
-% ---- Kompetanse -----------------------------------------------------
+% ---- Ferdigheter ----------------------------------------------------
 \newcommand{\kompetanse}[2]{%
   \par\noindent\makebox[38mm][l]{\small\bfseries #1}%
   \parbox[t]{\dimexpr\textwidth-38mm\relax}{\small #2\par}\par\vspace{\kompluft}%
@@ -164,7 +165,7 @@
 \newenvironment{brevtekst}{%
   \setlength{\parskip}{7pt}\linespread{1.15}\selectfont}{\par}
 \newcommand{\signatur}[1]{%
-  \par\vspace{8pt}Mvh\par\vspace{12mm}%
+  \par\vspace{8pt}\Hilsen\par\vspace{12mm}%
   {\display\bfseries #1}\par
   {\small\color{ink2}\Telefon\quad\textcolor{line}{|}\quad\Epost}\par
   \vspace{6pt}{\mono\small\color{iron}Vedlegg:}~{\small CV}\par}
