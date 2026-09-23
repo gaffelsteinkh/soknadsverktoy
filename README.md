@@ -172,6 +172,16 @@ git push -u origin main
 Kopien har en streng `.gitignore` som holder `input/`, `soknader/` og `cv-generell.tex` utenfor git.
 Det beskytter alle som forker repoet mot å publisere sine egne data ved et uhell.
 
+**Se etter deg selv i eksemplene også.** Verktøyfilene skrives mens du bruker dem, og eksempler i
+README, maler og arbeidsflyt blir fort hentet fra ditt eget søk: et firmanavn, en historie, et tall
+fra en kartlegging. Hver for seg er de ikke personopplysninger, men de kan kjennes igjen. Søk etter
+navn, steder og tall fra ditt eget `input/` før du publiserer, og les commit-meldingene dine. Når det
+offentlige repoet først er rent, synk endringer inn for hånd i stedet for å lage det på nytt.
+
+**En force-push vasker ikke alt.** Den fjerner gamle commits fra historikken, men GitHub viser dem
+fortsatt via en direkte lenke, og SHA-ene ligger i den offentlige hendelsesloggen en stund. Det
+eneste som fjerner dem helt, er å slette repoet og lage det på nytt. Gjør det riktig før første push.
+
 ## Personvern
 
 `input/` inneholder personopplysninger, og `soknader/` inneholder research på navngitte personer.

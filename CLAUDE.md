@@ -47,6 +47,10 @@ brukeren, er en feil. Mottakeren skal tro at brukeren skrev det selv.
 Når brukeren retter på noe du har skrevet: legg den rettede teksten i `input/skrivestil/tekster/`, og
 oppdater `SKRIVESTIL.md` med det du lærte. Rettelsene er det beste grunnlaget som finnes.
 
+**Står det i brukerens navn, må brukeren kunne forklare det i tjue minutter.** Det gjelder også det
+en lenke peker til. Er deler av et prosjekt laget av andre eller med KI, nevn bare det brukeren selv
+kan stå for.
+
 ## Oppgaver
 - **Stillingsannonse → research + spisset CV + søknad:** følg del A i `ARBEIDSFLYT.md`.
 - **Bedrift/nettside → research + åpen søknad:** følg del B i `ARBEIDSFLYT.md`.
@@ -70,6 +74,13 @@ De to første ender i samme sted: én mappe `soknader/<firma>/`. Del C ender i e
 - **⚑ Ett prosjekt på en spisset CV, ikke en liste.** Velg det ene som tilfører noe mottakeren
   ikke allerede får vite fra Erfaring. To prosjekter som beviser det samme er ett for mange,
   og en oppramsing beviser ingenting.
+- **⚑ Vekten i ferdighetslista skal stemme med posisjoneringen.** Leseren tar gruppen med flest
+  tagger som hvem personen er. Selger brukeren seg som praktiker, skal ikke data-gruppen være størst.
+- **⚑ Skjult tekst følger de samme reglene.** På en nett-CV leses også teksten som vises når lenka
+  deles (metabeskrivelser), linjer i JavaScript, alt-tekster og kommentarer i kildekoden. Når en regel
+  om innholdet endres, søk gjennom alt, ikke bare den synlige teksten.
+- **Commit-meldinger i et offentlig repo er offentlige.** Skriv *hva* som er endret. *Hvorfor* hører
+  hjemme i det private repoet når grunnen er personlig.
 - **Mappe per bedrift:** `soknader/<firma>/` med `annonse.md` (hvis utlyst stilling), `research.md`,
   `<firma>-cv.tex` og `<firma>-soknad.tex`. Start fra `maler/soknad/`. PDF-ene bygges i samme mappe.
 - **Lengde: CV nøyaktig 1 side. Brev nøyaktig 1 side.** Bredden lever videre på nett-CV-en, som QR-koden
